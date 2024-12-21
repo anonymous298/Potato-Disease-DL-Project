@@ -1,0 +1,38 @@
+[ 2024-12-22 01:04:48,231 ] 17 training - INFO - Training Pipeline Initialized
+[ 2024-12-22 01:04:48,231 ] 68 data-ingestion - INFO - Generator Object Creating Started
+[ 2024-12-22 01:04:48,231 ] 31 data-ingestion - INFO - Started Creating ImageDataGenerator Object for train and test
+[ 2024-12-22 01:04:48,231 ] 33 data-ingestion - INFO - Training ImageDataGenerator Object
+[ 2024-12-22 01:04:48,231 ] 46 data-ingestion - INFO - Testing ImageDataGenerator Object
+[ 2024-12-22 01:04:48,231 ] 49 data-ingestion - INFO - Data Augmenation Objects Created
+[ 2024-12-22 01:04:48,231 ] 72 data-ingestion - INFO - Training Generator Object Creating
+[ 2024-12-22 01:04:48,458 ] 80 data-ingestion - INFO - Testing Generator Object Creating
+[ 2024-12-22 01:04:48,638 ] 88 data-ingestion - INFO - Generator Objects Created successfully
+[ 2024-12-22 01:04:48,639 ] 102 model-trainer - INFO - Initiating Training for our model
+[ 2024-12-22 01:04:48,639 ] 64 model-trainer - INFO - Building Our own model with transfer learning
+[ 2024-12-22 01:04:48,639 ] 37 model-trainer - INFO - Loading the Pretrained Model
+[ 2024-12-22 01:04:51,365 ] 42 model-trainer - INFO - FineTuning the Model
+[ 2024-12-22 01:04:51,367 ] 48 model-trainer - INFO - Model Loaded
+[ 2024-12-22 01:04:51,421 ] 77 model-trainer - INFO - Model Builded Successfully
+[ 2024-12-22 01:04:51,421 ] 79 model-trainer - INFO - Compiling our model
+[ 2024-12-22 01:04:51,429 ] 82 model-trainer - INFO - Model Ready to train
+[ 2024-12-22 01:04:51,429 ] 106 model-trainer - INFO - Initializing callbacks for our model
+[ 2024-12-22 01:04:51,429 ] 109 model-trainer - INFO - Model Training Started
+[ 2024-12-22 01:20:40,445 ] 120 model-trainer - INFO - Model Trained Successfully
+[ 2024-12-22 01:20:40,445 ] 26 utils - INFO - Saving our model
+[ 2024-12-22 01:20:40,447 ] 83 absl - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+[ 2024-12-22 01:20:41,417 ] 32 utils - INFO - Model Saved Successfully
+[ 2024-12-22 01:20:41,417 ] 30 model-evaluation - INFO - Model Evaluation Started
+[ 2024-12-22 01:20:41,417 ] 49 utils - INFO - Loading model from path
+[ 2024-12-22 01:20:43,925 ] 256 absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+[ 2024-12-22 01:20:43,956 ] 54 utils - INFO - Model loaded successfully
+[ 2024-12-22 01:20:43,956 ] 37 model-evaluation - INFO - Connecting to our DagsHub
+[ 2024-12-22 01:20:45,312 ] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2024-12-22 01:20:45,363 ] 107 dagshub - INFO - Accessing as anonymous298
+[ 2024-12-22 01:20:45,976 ] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/anonymous298/Potato-Disease-DL-Project "HTTP/1.1 200 OK"
+[ 2024-12-22 01:20:46,570 ] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2024-12-22 01:20:46,578 ] 107 dagshub - INFO - Initialized MLflow to track repo "anonymous298/Potato-Disease-DL-Project"
+[ 2024-12-22 01:20:46,581 ] 107 dagshub - INFO - Repository anonymous298/Potato-Disease-DL-Project initialized!
+[ 2024-12-22 01:20:46,582 ] 41 model-evaluation - INFO - Evaluting for train data
+[ 2024-12-22 01:22:45,433 ] 44 model-evaluation - INFO - Evaluting for test data
+[ 2024-12-22 01:24:04,380 ] 47 model-evaluation - INFO - Experiment Tracking
+[ 2024-12-22 01:25:52,131 ] 57 model-evaluation - INFO - Everything Completed

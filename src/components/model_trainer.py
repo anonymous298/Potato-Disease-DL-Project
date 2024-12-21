@@ -10,7 +10,7 @@ from src.utils.logger import get_logger
 from src.utils.utils import save_model
 
 from tensorflow.keras.applications.efficientnet import EfficientNetB0
-from tensorflow.keras.layers import GlobalAveragePooling2D, Dropout, Dense, Flatten
+from tensorflow.keras.layers import GlobalAveragePooling2D, Dropout, Dense, Flatten, BatchNormalization
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping, TensorBoard
@@ -69,13 +69,15 @@ class ModelTrainer:
             model.add(base_model)
             model.add(GlobalAveragePooling2D())
             model.add(Dense(128, activation='relu'))
+            model.add(BatchNormalization())
             model.add(Dropout(0.5))
+
             model.add(Dense(3, activation='softmax'))
 
             logger.info('Model Builded Successfully')
 
             logger.info('Compiling our model')
-            model.compile(loss='categorical_crossentropy', optimizer=Adam(learning_rate=0.0001), metrics=['accuracy'])
+            model.compile(loss='categorical_crossentropy', optimizer=Adam(learning_rate=1e-4), metrics=['accuracy'])
 
             logger.info("Model Ready to train")
 
@@ -102,7 +104,7 @@ class ModelTrainer:
             model = self.transfer_learning()
 
             logger.info('Initializing callbacks for our model')
-            es_callback = EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True)
+            es_callback = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
 
             logger.info('Model Training Started')
             history = model.fit(
