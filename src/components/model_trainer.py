@@ -15,7 +15,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping, TensorBoard
 
-logger = get_logger()
+logger = get_logger('model-trainer')
 
 @dataclass
 class ModelPaths:
@@ -84,7 +84,7 @@ class ModelTrainer:
         except Exception as e:
             raise CustomException(e, sys)
 
-    def train_model(self, train_generator, validation_generator):
+    def start_training(self, train_generator, validation_generator):
         '''
         This method starts initializing the training of our model via Transfer Learning.
 
