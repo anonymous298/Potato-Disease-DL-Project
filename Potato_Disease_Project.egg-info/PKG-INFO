@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: Potato-Disease-Project
+Version: 0.1
+Summary: this package is about Potato-Plant-Disease-Project
+Author: Talha
+Author-email: tackletalha@gmail.com
+Requires-Dist: dvc
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: matplotlib
+Requires-Dist: tensorflow
+Requires-Dist: flask
+Requires-Dist: streamlit
+Requires-Dist: mlflow
+Requires-Dist: dagshub

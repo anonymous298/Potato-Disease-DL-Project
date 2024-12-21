@@ -8,11 +8,8 @@ from src.utils.exception import CustomException
 from src.utils.logger import get_logger
 
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout, Flatten
-from tensorflow.keras.applications.efficientnet import EfficientNetB0
 
-logger = get_logger()
+logger = get_logger('data-ingestion')
 
 @dataclass
 class DataPaths:

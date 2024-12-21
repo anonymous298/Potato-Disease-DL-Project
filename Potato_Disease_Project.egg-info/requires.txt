@@ -7,4 +7,3 @@ flask
 streamlit
 mlflow
 dagshub
--e .
