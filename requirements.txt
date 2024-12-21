@@ -1,0 +1,6 @@
+dvc
+numpy
+pandas
+tensorflow
+flask
+streamlit
