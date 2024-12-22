@@ -9,11 +9,13 @@ from src.utils.exception import CustomException
 from src.utils.logger import get_logger
 from src.utils.utils import save_model
 
+import tensorflow
 from tensorflow.keras.applications.efficientnet import EfficientNetB0
 from tensorflow.keras.layers import GlobalAveragePooling2D, Dropout, Dense, Flatten, BatchNormalization
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping, TensorBoard
+from tensorflow.keras.regularizers import l2
 
 logger = get_logger('model-trainer')
 
@@ -45,7 +47,11 @@ class ModelTrainer:
             # for layer in base_model.layers[:100]:  # Freeze first 100 layers
             #     layer.trainable = False
 
-            base_model.trainable = False
+            base_model.trainable = True
+
+            for layer in base_model.layers:
+                if isinstance(layer, tensorflow.keras.layers.BatchNormalization):
+                    layer.trainable = False
 
             logger.info("Model Loaded")
 
@@ -70,7 +76,7 @@ class ModelTrainer:
             model = Sequential()
             model.add(base_model)
             model.add(GlobalAveragePooling2D())
-            model.add(Dense(128, activation='relu'))
+            model.add(Dense(128, activation='relu', kernel_regularizer=l2(0.01)))
             model.add(BatchNormalization())
             model.add(Dropout(0.5))
 
