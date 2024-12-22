@@ -41,9 +41,11 @@ class ModelTrainer:
 
             logger.info('FineTuning the Model')
 
-            base_model.trainable = True
-            for layer in base_model.layers[:100]:  # Freeze first 100 layers
-                layer.trainable = False
+            # base_model.trainable = True
+            # for layer in base_model.layers[:100]:  # Freeze first 100 layers
+            #     layer.trainable = False
+
+            base_model.trainable = False
 
             logger.info("Model Loaded")
 
