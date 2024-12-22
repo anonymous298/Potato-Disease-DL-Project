@@ -10,7 +10,7 @@ from src.utils.logger import get_logger
 from src.utils.utils import save_model
 
 import tensorflow
-from tensorflow.keras.applications.efficientnet import EfficientNetB0
+from tensorflow.keras.applications import MobileNetV2
 from tensorflow.keras.layers import GlobalAveragePooling2D, Dropout, Dense, Flatten, BatchNormalization
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
@@ -38,20 +38,20 @@ class ModelTrainer:
         try:
             logger.info('Loading the Pretrained Model')
 
-            base_model = EfficientNetB0(weights='imagenet', include_top=False, input_shape=(256,256,3))
+            base_model = MobileNetV2(weights='imagenet', include_top=False, input_shape=(256,256,3))
 
 
             logger.info('FineTuning the Model')
 
-            # base_model.trainable = True
-            # for layer in base_model.layers[:100]:  # Freeze first 100 layers
-            #     layer.trainable = False
-
             base_model.trainable = True
+            for layer in base_model.layers[:-30]:
+                layer.trainable = False
 
-            for layer in base_model.layers:
-                if isinstance(layer, tensorflow.keras.layers.BatchNormalization):
-                    layer.trainable = False
+            # base_model.trainable = True
+
+            # for layer in base_model.layers:
+            #     if isinstance(layer, tensorflow.keras.layers.BatchNormalization):
+            #         layer.trainable = False
 
             logger.info("Model Loaded")
 
